@@ -1,89 +1,34 @@
-import { lazy } from 'react';
+import React, { lazy, Suspense } from 'react';
+
+const LazyPlanets = lazy(() => import('../../pages/PlanetsPage.js'));
+const LazyPlanetInfo = lazy(() => import('../../pages/PlanetInfoPage'));
 
 export default [
   {
-    path: '/',
-    label: 'Planets',
+    path: '/planets',
+    label: 'LazyPlanets',
     exact: true,
-    component: lazy(() => import('../../pages/PlanetsPage.js')),
+
+    component: 
+      <Suspense fallback={<h2>LOSD</h2>}>
+        <LazyPlanets />
+      </Suspense>
+    ,
     private: false,
     restricted: false
   },
   {
-    path: '/residents',
-    label: 'Residents',
+    path: '/planets/:name',
+    label: 'LazyPlanets',
     exact: true,
-    component: lazy(() => import('../../pages/ResidentsPage')),
+
+    component: 
+      <Suspense fallback={<h2>LOSD</h2>}>
+        <LazyPlanetInfo />
+      </Suspense>
+    ,
     private: false,
     restricted: false
   }
-  // {
-  //   path: '/profile/avatar',
-  //   label: 'Avatar',
-  //   exact: true,
-  //   component: lazy(() => import('./views/AvatarPage')),
-  //   private: false,
-  //   restricted: false
-  // },
-  // {
-  //   path: '/checklist',
-  //   label: 'CheckList',
-  //   exact: true,
-  //   component: lazy(() => import('./views/CheckListPage')),
-  //   private: false,
-  //   restricted: false
-  // }
+  
 ];
-
-
-
-
-
-// import React, {Suspense, lazy } from 'react'
-
-
-// const LazyStartGame = lazy(() => import('../../pages/StartGamePage'));
-// const LazyGame = lazy(() => import('../../pages/GamePage'));
-// const LazyGameOver = lazy(() => import('../../pages/GameOverPage'));
-
-
-
-// export default [
-//   {
-//     path: '/planets',
-//     label: 'Planets',
-//     exact: true,
-//     component: (
-//       <Suspense fallback={null}>
-//         <LazyStartGame/>
-//       </Suspense>
-//     ),
-//     private: false,
-//     restricted: false
-//   },
-
-//   {
-//     path: '/planets/:name',
-//     label: 'PlanetName',
-//     exact: true,
-//     component: (
-//       <Suspense fallback={null}>
-//         <LazyGame/>
-//       </Suspense>
-//     ),
-//     private: false,
-//     restricted: false
-//   },
-//   {
-//     path: '/game_over',
-//     label: 'Game_over',
-//     exact: true,
-//     component: (
-//       <Suspense fallback={null}>
-//         <LazyGameOver/>
-//       </Suspense>
-//     ),
-//     private: false,
-//     restricted: false
-//   }
-// ]

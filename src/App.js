@@ -1,28 +1,32 @@
-import React, { Component, Suspense } from 'react';
+import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import routes from './assets/routes/routes';
-import services from './services/services';
+import styled from 'styled-components';
+import { Header } from './components/Header/Header';
+import { v4 as uuidv4 } from 'uuid';
 
 export class App extends Component {
-  componentDidMount() {
-    this.getFilm();
-  }
-
-  getFilm() {
-    services.getAllPlanets().then(data => console.log(data));
-  }
-
   render() {
     return (
-      <Suspense fallback={<h2>Load.....</h2>}>
-        <div>
+      <>
+        <Header />
+        <Container>
           <Switch>
-            {routes.map(route => <Route key={route.label} {...route} />)}
+            {routes.map(route => 
+              <Route key={uuidv4()} {...route}>
+                {route.component}
+              </Route>
+            )}
           </Switch>
-        </div>
-      </Suspense>
+        </Container>
+      </>
     );
   }
 }
 
 export default App;
+
+const Container = styled.div`
+  width: 80%;
+  margin: 0 auto;
+`;
