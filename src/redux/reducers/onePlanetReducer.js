@@ -1,14 +1,11 @@
 import onePlanetActions from '../actions/onePlanetActions';
 
-const initialState = {
-  choosePlanet: []
-};
 
-const onePlanetReducer = (state = initialState, action) => {
-  console.log(action.payload , 'action.payload');
-  switch (action.type) {
+export const onePlanetReducer = (state = [], { type, payload }) => {
+
+  switch (type) {
     case onePlanetActions.getInfoOnePlanetSuccess:
-      return { ...action.payload };
+      return [...payload];
 
     default:
       return state;
@@ -16,3 +13,5 @@ const onePlanetReducer = (state = initialState, action) => {
 };
 
 export default {onePlanetReducer};
+
+

@@ -58,9 +58,8 @@ function Planets() {
               <img src={getImagePlanet()} alt="planet" width="170px" height="170px" />
                 <Link
                   to={{
-                    pathname: `planets/planet-info-${planet.name}-${planets.indexOf(planet) + 1}`
+                    pathname: `planets/${planets.indexOf(planet) + 1}`
                   }}
-                 
                   className={css.btnListPlanets}
                 >
                   {planet.name}

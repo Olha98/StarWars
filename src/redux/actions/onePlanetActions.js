@@ -4,13 +4,10 @@ const getInfoOnePlanetRequest = () => ({
   type: onePlanetConstants.GET_ONE_PLANET_REQUEST
 });
 
-const getInfoOnePlanetSuccess = id => {
-console.log(id,"Action id")
-  return{
-    type: onePlanetConstants.GET_ONE_PLANET_SUCCESS,
-    payload: id
-  }
-}
+const getInfoOnePlanetSuccess = planet => ({
+   type: onePlanetConstants.GET_ONE_PLANET_SUCCESS,
+  payload: planet
+});
 
 const getInfoOnePlanetError = error => ({
   type: onePlanetConstants.GET_ONE_PLANET_ERROR,

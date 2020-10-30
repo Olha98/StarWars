@@ -4,7 +4,7 @@ import onePlanetActions from '../actions/onePlanetActions';
 
 const getInfoOnePlanet = (id) => async dispatch => {
   // dispatch(actionsLoader.loaderOn());
-  console.log(id,"REDUSER")
+
   dispatch(onePlanetActions.getInfoOnePlanetRequest());
   try {
     const response = await axios.get(`https://swapi.dev/api/planets/${id}`);

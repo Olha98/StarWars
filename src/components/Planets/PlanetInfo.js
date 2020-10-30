@@ -44,14 +44,12 @@ const PlanetInfo = () => {
   };
   const history = useHistory();
   const dispatch = useDispatch();
-
-  const planetIndx = history.location.pathname.split("/planets/")[1];
-  console.log(planetIndx)
-
   // const currentPlanet = useSelector((state) => state.currentPlanet);
 
+  const planetIndx = history.location.pathname.split("/planets/")[1];
+  
   useEffect(() => {
-    dispatch(onePlanetOperation.getInfoOnePlanet(3));
+    dispatch(onePlanetOperation.getInfoOnePlanet(planetIndx));
   }, [dispatch, planetIndx]);
 
   return (
