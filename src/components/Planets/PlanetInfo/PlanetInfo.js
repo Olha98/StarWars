@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 // import onePlanetAction from '../../redux/actions/onePlanetActions';
-import onePlanetOperation from '../../redux/operations/onePlanetOperations'
+import onePlanetOperation from '../../../redux/operations/onePlanetOperations';
 
-import img from '../../assets/images/planets/other/mars_planet_PNG23.png';
-import css from './PlanetInfo.module.css'
-import { useHistory } from 'react-router-dom';
+import img from '../../../assets/images/planets/other/mars_planet_PNG23.png';
+import css from './PlanetInfo.module.css';
+import { Link, Route, useHistory, useRouteMatch } from 'react-router-dom';
+import { Residents } from '../Residents/Residents';
 
 const PlanetInfo = () => {
   // eslint-disable-next-line no-unused-vars
@@ -44,30 +45,39 @@ const PlanetInfo = () => {
   };
   const history = useHistory();
   const dispatch = useDispatch();
-  // const currentPlanet = useSelector((state) => state.currentPlanet);
+  // const choosePlanet = useSelector((state) => state.onePlanet); //! //!
+  const planetIndx = history.location.pathname.split('/planets/')[1];
 
-  const planetIndx = history.location.pathname.split("/planets/")[1];
-  
   useEffect(() => {
     dispatch(onePlanetOperation.getInfoOnePlanet(planetIndx));
   }, [dispatch, planetIndx]);
 
   return (
     <section className={css.wrapper}>
-      <h2 className={css.planetName}><a>{planet.name}</a></h2>
+      <h2 className={css.planetName}>
+        <a>{planet.name}</a>
+      </h2>
       <ul className={css.ListInfoPlanet}>
         <li>Rotation period: {planet.rotation_period}</li>
         <li>Climate: {planet.climate}</li>
-        <li>Diameter:{ planet.diameter}</li>
+        <li>Diameter:{planet.diameter}</li>
         <li>Gravity: {planet.gravity}</li>
         <li>Terrain: {planet.terrain}</li>
         <li>Population: {planet.population}</li>
-        <li>Residents: {planet.residents.length}</li>
+        <li>
+          <Link
+            to={{
+              pathname: `${useRouteMatch().url}/residents`
+            }}
+          >
+            Show catalog residents
+          </Link>
+        </li>
       </ul>
       <img src={img} className={css.imgPlanet} />
-      
+      <Route path={`${useRouteMatch().url}/residents`} exact render={() => <Residents info={planet.residents} />} />
     </section>
   );
 };
 
-export default PlanetInfo;
+export default PlanetInfo; 

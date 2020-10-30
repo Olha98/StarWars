@@ -1,7 +1,7 @@
 import onePlanetActions from '../actions/onePlanetActions';
 
 
-export const onePlanetReducer = (state = [], { type, payload }) => {
+const onePlanetReducer = (state = [], { type, payload }) => {
 
   switch (type) {
     case onePlanetActions.getInfoOnePlanetSuccess:

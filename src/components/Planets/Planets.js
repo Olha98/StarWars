@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import styled from 'styled-components';
 import css from './Planets.module.css';
@@ -6,21 +6,20 @@ import './Planets.module.css';
 import services from '../../services/services';
 import { Link } from 'react-router-dom';
 // import { useDispatch } from 'react-redux';
-
+import allPlanetOperations from '../../redux/operations/allPlanetOperations'
 import { getImagePlanet } from '../../assets/helperFunction/randomImgPlanet';
+import { useDispatch } from 'react-redux';
 
 function Planets() {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [planets, setPlanets] = useState([]);
-
+  // const planets = useSelector((state) => state.planets); //!//!//!//!//!//!
   useEffect(() => {
     resultApiPlanets();
-    // resultApiOnePlanets();
+
   }, []);
 
-
   const getPlanets = async data => {
-    //Правильно ли так вынимать данные //!
     try {
       let res = await data;
       setPlanets(res);
@@ -29,24 +28,18 @@ function Planets() {
     }
   };
 
-
-
   const resultApiPlanets = () => {
     services.getAllPlanets().then(({ data }) => getPlanets(data.results));
   };
 
+  const getAllPlanets = useCallback(() => {
+    dispatch(allPlanetOperations.getInfoAllPlanets());
+  }, [dispatch]);
 
+  useEffect(() => {
+    getAllPlanets();
+  }, [getAllPlanets]);
 
-  // const dispatch = useDispatch();
-  // const planets = useSelector((state) => state.planets);
-
-  // const getAllPlanets = useCallback(() => {
-  //   dispatch(getPlanets());
-  // }, [dispatch]);
-
-  // useEffect(() => {
-  //   getAllPlanets();
-  // }, [getAllPlanets]);
 
 
   return (

@@ -1,9 +1,9 @@
 import axios from 'axios';
 import onePlanetActions from '../actions/onePlanetActions';
-// import actionsLoader from '../actions/spinnerActions';
+import actionsLoader from '../actions/spinnerActions';
 
 const getInfoOnePlanet = (id) => async dispatch => {
-  // dispatch(actionsLoader.loaderOn());
+  dispatch(actionsLoader.loaderOn());
 
   dispatch(onePlanetActions.getInfoOnePlanetRequest());
   try {
@@ -13,7 +13,7 @@ const getInfoOnePlanet = (id) => async dispatch => {
   } catch (error) {
     dispatch(onePlanetActions.getInfoOnePlanetError(error));
   } finally {
-    // dispatch(actionsLoader.loaderOff());
+    dispatch(actionsLoader.loaderOff());
   }
 };
 

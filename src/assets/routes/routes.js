@@ -34,7 +34,7 @@ export default [
     restricted: false
   },
   {
-    path: '/planets/:name',
+    path: '/planets/:id',
     label: 'LazyPlanets',
     exact: true,
 
