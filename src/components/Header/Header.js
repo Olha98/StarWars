@@ -10,6 +10,7 @@ import { fade, makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
     flexGrow: 1
   },
   menuButton: {
@@ -79,7 +80,7 @@ export const Header = () => {
             {/* <MenuIcon /> */}
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
-            Material-UI
+            Stars Wars
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>

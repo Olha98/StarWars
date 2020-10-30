@@ -1,18 +1,29 @@
-import React from 'react';
+import React, { Component } from 'react';
+import styled from 'styled-components';
+import Loader from 'react-loader-spinner'
 
-export const Spinner = () => {
-  return (
-    <>
-      <div>loud</div>
-    </>
-  );
-};
-//  import Loader from 'react-loader-spinner'
-//  export default class App extends React.Component {
-//   //other logic
-//     render() {
-//      return(
-//       <Loader type="TailSpin" color="#00000" height={80} width={80} />
-//      );
-//     }
-//  }
+ export default class Spinner extends Component {
+
+    render() {
+     return(
+      <Wrapper>
+      <Loader
+         type="Puff"
+         color="#fff"
+         height={100}
+         width={100}
+         timeout={3000}
+ 
+      />
+      </Wrapper>
+     );
+    }
+ }
+
+ const Wrapper = styled.div`
+   margin: 0;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(0, -50%)
+ `

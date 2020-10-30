@@ -1,25 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import styled from 'styled-components';
+import css from './Planets.module.css';
+import './Planets.module.css';
 import services from '../../services/services';
-import planet2 from '../../assets/images/planets/55b8655f6eb92e0827747badf5bea873_w200.gif';
-import { Link, withRouter } from 'react-router-dom';
-import PlanetInfo from './PlanetInfo';
+import { Link } from 'react-router-dom';
+// import { useDispatch } from 'react-redux';
 
-function Planets(props) {
-  //  const MaineState ={
-  //   indexPlanet:null
-  //  }
+import { getImagePlanet } from '../../assets/helperFunction/randomImgPlanet';
+
+function Planets() {
+  // const dispatch = useDispatch();
   const [planets, setPlanets] = useState([]);
-  // const [onePlanet, setOnePlanet] = useState({});
-
 
   useEffect(() => {
     resultApiPlanets();
-    resultApiOnePlanets();
+    // resultApiOnePlanets();
   }, []);
-
-  
 
 
   const getPlanets = async data => {
@@ -32,72 +29,102 @@ function Planets(props) {
     }
   };
 
+
+
   const resultApiPlanets = () => {
-    //!What better calls this fun?
     services.getAllPlanets().then(({ data }) => getPlanets(data.results));
   };
 
-  const hendelClick = event => {
-    const chooseNamePlanet = event.target.innerText;
-    const index = planets.findIndex(planet => planet.name === chooseNamePlanet);
-    const correctIndex = Number(index) + 1;
-    if (index !== -1) {
-      resultApiOnePlanets(correctIndex);
-    } else {
-      console.log('Not faund yoer planet'); //! Need correct this decision and needed such condition ?
-    }
-  };
 
-  
 
-  const resultApiOnePlanets = (id) => {
-      services.getinfoOnePlanet(id).then(( data ) => console.log(data)); //!two times write asyn/await(services and here...)
-     //! не могу передать в
+  // const dispatch = useDispatch();
+  // const planets = useSelector((state) => state.planets);
 
-  };
+  // const getAllPlanets = useCallback(() => {
+  //   dispatch(getPlanets());
+  // }, [dispatch]);
+
+  // useEffect(() => {
+  //   getAllPlanets();
+  // }, [getAllPlanets]);
+
 
   return (
-    <Wrapper>
-      <List>
-        {planets.map(planet => 
-          <ListItem key={uuidv4()}>
-            <img src={planet2} alt="planet" width="150px" height="150px" />
-            <button type="button" onClick={hendelClick}>
-              <Link
-                to={{
-                  pathname: `planets/planet-info-${planet.name}`,
-                  // eslint-disable-next-line react/prop-types
-                  state: { from: props.location } //!
-                }}
-              >
-                {planet.name}
-              </Link>
-            </button>
-            <p>Climate:{planet.climate}</p>
-            <p>Population:{planet.population}</p>
-          </ListItem>
-        )}
-      </List>
-      <PlanetInfo /> 
-    </Wrapper>
+    <>
+      <Wrapper>
+        <List>
+          {planets.map(planet => 
+            <ListItem key={uuidv4()}>
+              <img src={getImagePlanet()} alt="planet" width="170px" height="170px" />
+                <Link
+                  to={{
+                    pathname: `planets/planet-info-${planet.name}-${planets.indexOf(planet) + 1}`
+                  }}
+                 
+                  className={css.btnListPlanets}
+                >
+                  {planet.name}
+                </Link>
+             
+              <Paragraph>
+                Climate:<span>{planet.climate}</span>
+              </Paragraph>
+              <Paragraph>
+                Population:<span>{planet.population}</span>
+              </Paragraph>
+            </ListItem>
+          )}
+        </List>
+      </Wrapper>
+    </>
   );
 }
-//! как без редакса передать ? инфу 81 string
-export default withRouter(Planets);
+
+export default Planets;
+
 const Wrapper = styled.div`
   display: flex;
+  width: 100%;
 `;
 
 const List = styled.ul`
+  margin-top: 5%;
+  margin-left: 2%;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+  justify-content: center;
+  width: 90%;
 `;
 
 const ListItem = styled.li`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 5%;
+  align-items: center;
+  margin: 2%;
+  padding: 2em;
+  background: rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.8);
+  border-radius: 10px;
+
+  & img {
+    display: flex;
+    border-radius: 52%;
+
+    padding: 4%;
+  }
+`;
+
+const Paragraph = styled.p`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-weight: 300;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 2px;
+  margin: 2%;
 `;
 

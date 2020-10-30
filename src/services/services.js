@@ -5,6 +5,7 @@ export default{
   async getAllPlanets (){
     try {
       const response = await axios.get(`https://swapi.dev/api/planets/`);
+      console.log(response)
       return response;
     } catch (error) {
       console.log(error);
