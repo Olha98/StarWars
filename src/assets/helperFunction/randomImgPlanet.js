@@ -10,6 +10,17 @@ import planet9 from '../images/planets/9.gif';
 import planet10 from '../images/planets/10.gif';
 import planet11 from '../images/planets/11.gif';
 
+import staticImgPlanet1 from '../images/staticPlanets/1.png'
+import staticImgPlanet2 from '../images/staticPlanets/2.png'
+import staticImgPlanet3 from '../images/staticPlanets/3.png'
+import staticImgPlanet4 from '../images/staticPlanets/4.png'
+import staticImgPlanet5 from '../images/staticPlanets/5.png'
+import staticImgPlanet7 from '../images/staticPlanets/7.png'
+import staticImgPlanet8 from '../images/staticPlanets/8.png'
+import staticImgPlanet9 from '../images/staticPlanets/9.png'
+import staticImgPlanet11 from '../images/staticPlanets/11.png'
+
+
 export const getImagePlanet = () => {
   const arrayPlanets = [
     planet1,
@@ -28,3 +39,21 @@ export const getImagePlanet = () => {
   let rand = arrayPlanets[Math.floor(Math.random() * arrayPlanets.length)];
   return rand;
 };
+
+export const getStaticImagePlanet = () => {
+  const arrayStaticPlanets = [
+    staticImgPlanet1,
+    staticImgPlanet2,
+    staticImgPlanet3,
+    staticImgPlanet4,
+    staticImgPlanet5,
+    staticImgPlanet7,
+    staticImgPlanet8,
+    staticImgPlanet9,
+    staticImgPlanet11
+  ];
+
+  let rand = arrayStaticPlanets[Math.floor(Math.random() * arrayStaticPlanets.length)];
+  return rand;
+};
+

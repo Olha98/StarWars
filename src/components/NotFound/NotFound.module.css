@@ -1,16 +1,15 @@
 .wrapper {
   margin:0;
   padding:0;
-  height: 100vh;
-  width: 100vw;
+  height: 99.5vh;
+  width: 100%;
   background-image: url('../../assets/images/planets/other/image_860908161512238084169.gif');
   display:flex;
-
 }
 
 .container{
   width: 100%;
-  display:flex;
+  display: flex;
   justify-content: center;
   text-align: center;
 }
@@ -25,6 +24,7 @@
   text-align:center; 
   font-size: 3rem;
 }
+
 .star{
   position:absolute;
   width:2px;
@@ -33,15 +33,17 @@
   right:0;
   animation:starTwinkle 3s infinite linear;
 }
+
 .astronaut img{
   width:100px;
   position:absolute;
   top:55%;
   animation:astronautFly 6s infinite linear;
 }
+
 @keyframes astronautFly{
   0%{
-    left:-100px;
+    left:-90px;
   }
   25%{
     top:50%;
@@ -56,10 +58,11 @@
     transform:rotate(30deg);
   }
   100%{
-    left:100%;
+    left:90%;
     transform:rotate(45deg);
   }
 }
+
 @keyframes starTwinkle{
   0%{
      background:rgba(255,255,255,0.4);
@@ -77,52 +80,3 @@
     background:rgba(255,255,255,0.4);
   }
 }
-
-.btnNotFound {
-  text-decoration: none;
-  outline: none;
-  display: inline-block;
-  padding: 20px 30px;
-  position: absolute;
-  top: 60%;
-  color: white;
-  background-color: rgba(0, 0, 0, 0.608);
-  border: 1px solid rgba(255,255,255,.4);
-  background: none;
-  font-weight: 300;
-  font-family: 'Montserrat', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-.btnNotFound:before,
-.btnNotFound:after {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 0;
-  opacity: 0;
-  box-sizing: border-box;
-}
-.btnNotFound:before {
-  bottom: 0;
-  left: 0;
-  border-left: 1px solid white;
-  border-top: 1px solid white;
-  transition: 0s ease opacity .8s, .2s ease width .4s, .2s ease height .6s;
-}
-.btnNotFound:after {
-  top: 0;
-  right: 0;
-  border-right: 1px solid white;
-  border-bottom: 1px solid white;
-  transition: 0s ease opacity .4s, .2s ease width , .2s ease height .2s;
-}
-.btnNotFound:hover:before,
-.btnNotFound:hover:after{
-  height: 100%;
-  width: 100%;
-  opacity: 1;
-}
-.btnNotFound:hover:before {transition: 0s ease opacity 0s, .2s ease height, .2s ease width .2s;}
-.btnNotFound:hover:after {transition: 0s ease opacity .4s, .2s ease height .4s , .2s ease width .6s;}
-.btnNotFound:hover {background: rgba(0, 0, 0, 0.808);}

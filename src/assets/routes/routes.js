@@ -8,43 +8,31 @@ const LazyPlanetInfo = lazy(() => import('../../pages/PlanetInfoPage'));
 export default [
   {
     path: '/',
-    label: 'LazyHome',
     exact: true,
-
     component: 
       <Suspense fallback={<Spinner/>}>
         <LazyHome />
       </Suspense>
-    ,
-    private: false,
-    restricted: false
+    
+   
   },
  
   {
     path: '/planets',
-    label: 'LazyPlanets',
     exact: true,
-
     component: 
       <Suspense fallback={<Spinner/>}>
         <LazyPlanets />
       </Suspense>
-    ,
-    private: false,
-    restricted: false
+   
   },
   {
     path: '/planets/:id',
-    label: 'LazyPlanets',
     exact: true,
-
     component: 
       <Suspense fallback={<Spinner/>}>
         <LazyPlanetInfo />
       </Suspense>
-    ,
-    private: false,
-    restricted: false
   }
   
 ];

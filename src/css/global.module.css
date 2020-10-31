@@ -1,0 +1,109 @@
+/*-- BUTTONS --*/
+
+:global(.button)  {
+  color: white;
+  width: 45%;
+  text-align: center;
+}
+
+:global(.button)  {
+  text-decoration: none;
+  outline: none;
+  display: block;
+  padding: 20px 110px;
+  position: relative;
+  margin: 0 auto;
+  color: white;
+  border: 1px solid rgba(255,255,255,.4);
+  background: none;
+  font-weight: 300;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  z-index: 10;
+}
+:global(.button):before,
+:global(.button):after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  box-sizing: border-box;
+}
+:global(.button):before {
+  bottom: 0;
+  left: 0;
+  border-left: 1px solid white;
+  border-top: 1px solid white;
+  transition: 0s ease opacity .8s, .2s ease width .4s, .2s ease height .6s;
+}
+:global(.button):after {
+  top: 0;
+  right: 0;
+  border-right: 1px solid white;
+  border-bottom: 1px solid white;
+  transition: 0s ease opacity .4s, .2s ease width , .2s ease height .2s;
+}
+:global(.button):hover:before,
+.btnHome:hover:after{
+  height: 100%;
+  width: 100%;
+  opacity: 1;
+}
+:global(.button):hover:before {transition: 0s ease opacity 0s, .2s ease height, .2s ease width .2s;}
+:global(.button):hover:after {transition: 0s ease opacity .4s, .2s ease height .4s , .2s ease width .6s;}
+:global(.button):hover {background: rgba(255,255,255,.2);}
+
+
+/* buttonBgBlack */
+
+:global(.buttonBgBlack) {
+  text-decoration: none;
+  outline: none;
+  display: inline-block;
+  padding: 20px 30px;
+  position: absolute;
+  top: 60%;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.608);
+  border: 1px solid rgba(255,255,255,.4);
+  background: none;
+  font-weight: 300;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+:global(.buttonBgBlack):before,
+:global(.buttonBgBlack):after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  box-sizing: border-box;
+}
+:global(.buttonBgBlack):before {
+  bottom: 0;
+  left: 0;
+  border-left: 1px solid white;
+  border-top: 1px solid white;
+  transition: 0s ease opacity .8s, .2s ease width .4s, .2s ease height .6s;
+}
+:global(.buttonBgBlack):after {
+  top: 0;
+  right: 0;
+  border-right: 1px solid white;
+  border-bottom: 1px solid white;
+  transition: 0s ease opacity .4s, .2s ease width , .2s ease height .2s;
+}
+:global(.buttonBgBlack):before,
+:global(.buttonBgBlack):after{
+  height: 100%;
+  width: 100%;
+  opacity: 1;
+}
+:global(.buttonBgBlack):hover:before {transition: 0s ease opacity 0s, .2s ease height, .2s ease width .2s;}
+:global(.buttonBgBlack):hover:after {transition: 0s ease opacity .4s, .2s ease height .4s , .2s ease width .6s;}
+:global(.buttonBgBlack):hover {background: rgba(0, 0, 0, 0.808);}
