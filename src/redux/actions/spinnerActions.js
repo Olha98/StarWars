@@ -1,11 +1,11 @@
-import spinnerConstants from "../constants/spinnerConstants";
+import constants from '../constants/spinnerConstants';
 
 const loaderOn = () => ({
-  type: spinnerConstants.LOADER_ON
+  type: constants.LOADER_ON
 });
 
 const loaderOff = () => ({
-  type: spinnerConstants.LOADER_OFF
+  type: constants.LOADER_OFF
 });
 
 export default {

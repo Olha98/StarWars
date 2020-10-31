@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
-import spinnerReducer from './spinnerReducer';
-import onePlanetReducer from './onePlanetReducer';
-import allPlanetsReducer from './allPlanetsReducer';
+import { loadingReducer } from './spinnerReducer';
+import { onePlanetReducer } from './onePlanetReducer';
+import { allPlanetsReducer } from './allPlanetsReducer';
 
 const root = combineReducers({
-  loading: spinnerReducer.loadingReducer, 
-  allPlanets: allPlanetsReducer.allPlanetsReducer,
-  onePlanet: onePlanetReducer.onePlanetReducer
+  loading: loadingReducer,
+  allPlanets: allPlanetsReducer,
+  onePlanet: onePlanetReducer
 });
 
 export default root;

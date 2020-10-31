@@ -1,22 +1,20 @@
-.wrapper{
+.wrapper, .list, .listItem, .listItem img, .listItem p {
   display: flex;
   justify-content: center;
+}
+
+.wrapper{
   width: 100%;
 }
 
 .list{
-  display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  justify-content: center;
   width: 85%;
 }
 
-
 .listItem {
-  display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   margin: 2%;
   padding: 2em;
@@ -27,19 +25,16 @@
 }
 
 .listItem img {
-  display: flex;
   padding: 4%;
   border-radius: 52%;
 }
 
 .listItem p {
-  display: flex;
   align-items: center;
   flex-direction: column;
-  justify-content: center;
   margin: 2%;
   font-weight: 300;
-  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
   letter-spacing: 2px;
 }
  
@@ -58,9 +53,11 @@
     text-transform: uppercase;
     letter-spacing: 2px;
   }
+
   .btnListPlanets a {
     color: white;
   }
+  
   .btnListPlanets:before,
   .btnListPlanets:after {
     content: "";
@@ -70,6 +67,7 @@
     opacity: 0;
     box-sizing: border-box;
   }
+
   .btnListPlanets:before {
     bottom: 0;
     left: 0;
@@ -77,6 +75,7 @@
     border-top: 1px solid white;
     transition: 0s ease opacity .8s, .2s ease width .4s, .2s ease height .6s;
   }
+
   .btnListPlanets:after {
     top: 0;
     right: 0;
@@ -84,12 +83,14 @@
     border-bottom: 1px solid white;
     transition: 0s ease opacity .4s, .2s ease width , .2s ease height .2s;
   }
+
   .btnListPlanets:hover:before,
   .btnListPlanets:hover:after{
     height: 100%;
     width: 100%;
     opacity: 1;
   }
+
   .btnListPlanets:hover:before {transition: 0s ease opacity 0s, .2s ease height, .2s ease width .2s;}
   .btnListPlanets:hover:after {transition: 0s ease opacity .4s, .2s ease height .4s , .2s ease width .6s;}
   .btnListPlanets:hover {background: rgba(255,255,255,.2);}

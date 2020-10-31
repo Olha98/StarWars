@@ -1,13 +1,11 @@
-import allPlanetsConstants from '../constants/allPlanetsConstants';
+import constants from '../constants/allPlanetsConstants';
 
-const allPlanetsReducer = (state = [], { type, payload }) => {
+export const allPlanetsReducer = (state = [], { type, payload }) => {
   switch (type) {
-    case allPlanetsConstants.GET_PLANETS_SUCCESS:
+    case constants.GET_PLANETS_SUCCESS:
       return [...payload];
 
     default:
       return state;
   }
 };
-
-export default { allPlanetsReducer };

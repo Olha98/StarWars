@@ -10,8 +10,6 @@
   position: relative;
 }
 
-
-
 .homeTitle::before {
   content: "";
   display: block;

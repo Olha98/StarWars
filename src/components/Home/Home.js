@@ -17,7 +17,7 @@ const Home = () => {
         <em>R</em>
         <em>S</em>
       </h1>
-      <Link to="/planets" className='button'>
+      <Link to="/planets" className="button">
         Go to catalog of planets
       </Link>
     </div>

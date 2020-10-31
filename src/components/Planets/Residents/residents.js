@@ -1,41 +1,36 @@
 import React, { useEffect, useState } from 'react';
-import CustomScrollbars from '../../Scroll/Scroll';
-import imgPerson from '../../../assets/images/planets/other/alien_PNG35.png';
-import css from './Residents.module.css';
-import axios from "axios";
-import Spinner from '../../Spinner/Spinner';
 import { useSelector } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
+import PropTypes from 'prop-types';
+import axios from 'axios';
 
+import imgPerson from '../../../assets/images/planets/other/alien_PNG35.png';
+import CustomScrollbars from '../../Scroll/Scroll';
+import Spinner from '../../Spinner/Spinner';
+import styled from './Residents.module.css';
 
-// eslint-disable-next-line react/prop-types
-export const Residents = ({apiResidents}) => {
-
- const [residents, setResidents] = useState([]);
-const isLoading = useSelector(state => state.loading);
+export const Residents = ({ apiResidents }) => {
+  const [residents, setResidents] = useState([]);
+  const isLoading = useSelector(state => state.loading);
 
   useEffect(() => {
     if (apiResidents) {
-      setResidents('')
-      // eslint-disable-next-line react/prop-types
-      apiResidents.map((item) =>
-        axios(item).then(({ data }) => setResidents((info) => [...info, data]))
-      );
+      setResidents('');
+      apiResidents.map(item => axios(item).then(({ data }) => setResidents(info => [...info, data])));
     }
-    console.log(residents);
   }, [apiResidents]);
-
 
   return (
     <CustomScrollbars style={{ height: 370, top: 10 }}>
-    {isLoading && <Spinner />}
-      <div className={css.wrapper}>
-        <ul className={css.listResident}>
-          {residents.length > 0 
-          ? residents.map(resident => 
+      {isLoading && <Spinner />}
+      <div className={styled.wrapper}>
+        <ul className={styled.listResident}>
+          {residents.length > 0 ? 
+            residents.map(resident => 
               <>
-                <li>
+                <li key={uuidv4()}>
                   <img src={imgPerson} alt="resident" width="150" height="150" />
-                  <p className={css.residentName}>{resident.name}</p>
+                  <p className={styled.residentName}>{resident.name}</p>
                   <p>Eye color: {resident.eye_color}</p>
                   <p>Skin color: {resident.skin_color}</p>
                   <p>Birth year: {resident.birth_year}</p>
@@ -45,7 +40,7 @@ const isLoading = useSelector(state => state.loading);
               </>
             )
            : 
-            <div className={css.warning}>
+            <div className={styled.warning}>
               <p>&#128711; No residents on this planet &#128711;</p>
             </div>
           }
@@ -53,4 +48,8 @@ const isLoading = useSelector(state => state.loading);
       </div>
     </CustomScrollbars>
   );
+};
+
+Residents.propTypes = {
+  apiResidents: PropTypes.array.isRequired
 };

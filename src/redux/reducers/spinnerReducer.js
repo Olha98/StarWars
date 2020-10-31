@@ -1,15 +1,13 @@
-import spinnerConstants from "../constants/spinnerConstants";
+import constants from '../constants/spinnerConstants';
 
-const loadingReducer = (state = false, { type }) => {
+export const loadingReducer = (state = false, { type }) => {
   switch (type) {
-    case spinnerConstants.LOADER_ON:
+    case constants.LOADER_ON:
       return true;
-    case spinnerConstants.LOADER_OFF:
+    case constants.LOADER_OFF:
       return false;
 
     default:
       return state;
   }
 };
-
-export default { loadingReducer };

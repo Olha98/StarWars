@@ -1,16 +1,16 @@
-import onePlanetConstants from '../constants/onePlanetConstants';
+import constants from '../constants/onePlanetConstants';
 
 const getInfoOnePlanetRequest = () => ({
-  type: onePlanetConstants.GET_ONE_PLANET_REQUEST
+  type: constants.GET_ONE_PLANET_REQUEST
 });
 
 const getInfoOnePlanetSuccess = planet => ({
-  type: onePlanetConstants.GET_ONE_PLANET_SUCCESS,
+  type: constants.GET_ONE_PLANET_SUCCESS,
   payload: planet
 });
 
 const getInfoOnePlanetError = error => ({
-  type: onePlanetConstants.GET_ONE_PLANET_ERROR,
+  type: constants.GET_ONE_PLANET_ERROR,
   payload: error
 });
 

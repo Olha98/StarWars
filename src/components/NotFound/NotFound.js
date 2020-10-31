@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import css from './NotFound.module.css';
+import styled from './NotFound.module.css';
 import './NotFound.module.css';
 
 export const NotFound = () => {
+  
   document.addEventListener('DOMContentLoaded', function () {
     let body = document.body;
     setInterval(createStar, 100);
@@ -26,25 +27,25 @@ export const NotFound = () => {
   });
 
   return (
-    <section className={css.wrapper}>
-      <div className={css.container}>
-        <div className={css.text}>
+    <section className={styled.wrapper}>
+      <div className={styled.container}>
+        <div className={styled.text}>
           <div>ERROR</div>
           <h1>404</h1>
           <hr />
           <div>Page Not Found</div>
         </div>
-        <div className={css.astronaut}>
+        <div className={styled.astronaut}>
           <img
             // eslint-disable-next-line max-len
             src="https://images.vexels.com/media/users/3/152639/isolated/preview/506b575739e90613428cdb399175e2c8-space-astronaut-cartoon-by-vexels.png"
             alt="space"
             width="300"
             height="300"
-            className={css.src}
+            className={styled.src}
           />
         </div>
-        <Link to="/" className='buttonBgBlack'>
+        <Link to="/" className="buttonBgBlack">
           Go Back
         </Link>
       </div>

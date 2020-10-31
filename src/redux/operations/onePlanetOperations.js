@@ -1,19 +1,19 @@
 import axios from 'axios';
-import onePlanetActions from '../actions/onePlanetActions';
+import actions from '../actions/onePlanetActions';
 import actionsLoader from '../actions/spinnerActions';
 
-const getInfoOnePlanet = (id) => async dispatch => {
+const getInfoOnePlanet = id => async dispatch => {
   dispatch(actionsLoader.loaderOn());
+  dispatch(actions.getInfoOnePlanetRequest());
 
-  dispatch(onePlanetActions.getInfoOnePlanetRequest());
   try {
     const response = await axios.get(`https://swapi.dev/api/planets/${id}`);
-    dispatch(onePlanetActions.getInfoOnePlanetSuccess(response.data));
+    dispatch(actions.getInfoOnePlanetSuccess(response.data));
   } catch (error) {
-    dispatch(onePlanetActions.getInfoOnePlanetError(error));
+    dispatch(actions.getInfoOnePlanetError(error));
   } finally {
     dispatch(actionsLoader.loaderOff());
   }
 };
 
-export default {getInfoOnePlanet};
+export default { getInfoOnePlanet };
