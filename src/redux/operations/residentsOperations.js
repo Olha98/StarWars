@@ -2,14 +2,18 @@ import axios from 'axios';
 import residentsActions from '../actions/residentsActions';
 import actionsLoader from '../actions/spinnerActions';
 
-const getResidents = (http) => async dispatch => {
+const getResidents = (residents) => async dispatch => {
+  
   dispatch(actionsLoader.loaderOn());
-
   dispatch(residentsActions.getResidentsRequest());
   try {
-    const response = await axios.get(`${http}`);
-    console.log(response, `OPRERATION RES`)
-    dispatch(residentsActions.getResidentsSuccess(response));
+    
+    const requests = await residents.map(resident => axios.get(`${resident}`));
+    await Promise.all(requests)
+    .then(responses => Promise.all(responses.map(res => dispatch(residentsActions.getResidentsSuccess(res.data)))))
+   
+    // 
+
   } catch (error) {
     dispatch(residentsActions.getResidentsError(error));
   } finally {

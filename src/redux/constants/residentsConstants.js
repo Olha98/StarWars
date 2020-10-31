@@ -1,6 +1,6 @@
-const GET_RESIDENTS_REQUEST = '@planetInfo/getResidentsRequest';
-const GET_RESIDENTS_SUCCESS = '@planetInfo/getResidentsSuccess';
-const GET_RESIDENTS_ERROR = '@planetInfo/getResidentsError';
+const GET_RESIDENTS_REQUEST = '@residents/getResidentsRequest';
+const GET_RESIDENTS_SUCCESS = '@residents/getResidentsSuccess';
+const GET_RESIDENTS_ERROR = '@residents/getResidentsError';
 
 export default {
   GET_RESIDENTS_REQUEST,

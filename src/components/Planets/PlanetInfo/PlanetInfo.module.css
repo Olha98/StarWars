@@ -130,6 +130,7 @@ body::after {
 
 .ListInfoPlanet{
 display: flex;
+position: relative;
 flex-direction: column;
 margin-top: 3%;
 margin-left: 5%;

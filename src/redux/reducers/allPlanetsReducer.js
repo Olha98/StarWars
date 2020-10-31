@@ -1,9 +1,8 @@
-import action from '../actions/allPlanetActions';
+import allPlanetsConstants from '../constants/allPlanetsConstants';
 
-const onePlanetReducer = (state = [], { type, payload }) => {
-  console.log(payload, 'payload');
+const allPlanetsReducer = (state = [], { type, payload }) => {
   switch (type) {
-    case action.GET_PLANETS_SUCCESS:
+    case allPlanetsConstants.GET_PLANETS_SUCCESS:
       return [...payload];
 
     default:
@@ -11,4 +10,4 @@ const onePlanetReducer = (state = [], { type, payload }) => {
   }
 };
 
-export default { onePlanetReducer };
+export default { allPlanetsReducer };

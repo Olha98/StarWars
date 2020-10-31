@@ -1,17 +1,14 @@
-import onePlanetActions from '../actions/onePlanetActions';
+import onePlanetConstants from '../constants/onePlanetConstants';
 
-
-const onePlanetReducer = (state = [], { type, payload }) => {
+const onePlanetReducer = (state = {}, { type, payload }) => {
 
   switch (type) {
-    case onePlanetActions.getInfoOnePlanetSuccess:
-      return [...payload];
+    case onePlanetConstants.GET_ONE_PLANET_SUCCESS:
+      return { ...payload };
 
     default:
       return state;
   }
 };
 
-export default {onePlanetReducer};
-
-
+export default { onePlanetReducer };

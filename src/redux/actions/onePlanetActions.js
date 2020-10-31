@@ -5,7 +5,7 @@ const getInfoOnePlanetRequest = () => ({
 });
 
 const getInfoOnePlanetSuccess = planet => ({
-   type: onePlanetConstants.GET_ONE_PLANET_SUCCESS,
+  type: onePlanetConstants.GET_ONE_PLANET_SUCCESS,
   payload: planet
 });
 
@@ -14,7 +14,8 @@ const getInfoOnePlanetError = error => ({
   payload: error
 });
 
-export default { 
-  getInfoOnePlanetRequest, 
-  getInfoOnePlanetSuccess, 
-  getInfoOnePlanetError };
+export default {
+  getInfoOnePlanetRequest,
+  getInfoOnePlanetSuccess,
+  getInfoOnePlanetError
+};

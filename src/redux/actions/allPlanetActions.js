@@ -4,9 +4,9 @@ const getPlanetsRequest = () => ({
   type: constants.GET_PLANETS_REQUEST
 });
 
-const getPlanetsSuccess = planet => ({
-   type: constants.GET_PLANETS_SUCCESS,
-  payload: planet
+const getPlanetsSuccess = planets => ({
+  type: constants.GET_PLANETS_SUCCESS,
+  payload: planets
 });
 
 const getPlanetsError = error => ({
@@ -14,7 +14,8 @@ const getPlanetsError = error => ({
   payload: error
 });
 
-export default { 
-  getPlanetsRequest, 
-  getPlanetsSuccess, 
-  getPlanetsError };
+export default {
+  getPlanetsRequest,
+  getPlanetsSuccess,
+  getPlanetsError
+};

@@ -1,6 +1,6 @@
-const GET_PLANETS_REQUEST = '@planetInfo/getPlanetsRequest';
-const GET_PLANETS_SUCCESS = '@planetInfo/getPlanetsSuccess';
-const GET_PLANETS_ERROR = '@planetInfo/getPlanetsError';
+const GET_PLANETS_REQUEST = '@planets/getPlanetsRequest';
+const GET_PLANETS_SUCCESS = '@planets/getPlanetsSuccess';
+const GET_PLANETS_ERROR = '@planets/getPlanetsError';
 
 export default {
   GET_PLANETS_ERROR,

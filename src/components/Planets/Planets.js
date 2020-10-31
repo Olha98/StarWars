@@ -1,36 +1,18 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
+import { getImagePlanet } from '../../assets/helperFunction/randomImgPlanet';
+import allPlanetOperations from '../../redux/operations/allPlanetOperations'
+
 import styled from 'styled-components';
 import css from './Planets.module.css';
 import './Planets.module.css';
-import services from '../../services/services';
-import { Link } from 'react-router-dom';
-// import { useDispatch } from 'react-redux';
-import allPlanetOperations from '../../redux/operations/allPlanetOperations'
-import { getImagePlanet } from '../../assets/helperFunction/randomImgPlanet';
-import { useDispatch } from 'react-redux';
 
 function Planets() {
+
   const dispatch = useDispatch();
-  const [planets, setPlanets] = useState([]);
-  // const planets = useSelector((state) => state.planets); //!//!//!//!//!//!
-  useEffect(() => {
-    resultApiPlanets();
-
-  }, []);
-
-  const getPlanets = async data => {
-    try {
-      let res = await data;
-      setPlanets(res);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const resultApiPlanets = () => {
-    services.getAllPlanets().then(({ data }) => getPlanets(data.results));
-  };
+  const planets = useSelector((state) => state.allPlanets); 
 
   const getAllPlanets = useCallback(() => {
     dispatch(allPlanetOperations.getInfoAllPlanets());
@@ -40,13 +22,11 @@ function Planets() {
     getAllPlanets();
   }, [getAllPlanets]);
 
-
-
   return (
     <>
       <Wrapper>
         <List>
-          {planets.map(planet => 
+          {planets && planets.map(planet => 
             <ListItem key={uuidv4()}>
               <img src={getImagePlanet()} alt="planet" width="170px" height="170px" />
                 <Link
