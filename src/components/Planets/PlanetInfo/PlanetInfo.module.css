@@ -37,6 +37,11 @@ margin-left: 5%;
   letter-spacing: 2px;
 }
 
+.ListInfoPlanet li:hover{
+transform: translateY(-7px);
+background-color: rgba(12, 10, 10, 0.473);
+}
+
 .planetName{
 margin: 10%;
 position: absolute;

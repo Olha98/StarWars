@@ -7,8 +7,7 @@ const getInfoOnePlanet = id => async dispatch => {
   dispatch(actions.getInfoOnePlanetRequest());
 
   try {
-    const response = await axios.get(`https://swapi.dev/api/planets/${id}`);
-    console.log(response,"response")
+    const response = await axios.get(`//swapi.dev/api/planets/${id}`);
     dispatch(actions.getInfoOnePlanetSuccess(response.data));
   } catch (error) {
     dispatch(actions.getInfoOnePlanetError(error));
